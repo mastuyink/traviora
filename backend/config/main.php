@@ -100,12 +100,7 @@ return [
             ],
         ],
 
-        'urlManagerFrontend' => [
-            'class' => 'yii\web\urlManager',
-            'baseUrl' => 'https://traviora.com/posting/index',
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-        ],
+        
 
        /* 'view' => [
          'theme' => [

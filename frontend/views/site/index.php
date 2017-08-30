@@ -8,7 +8,7 @@ use kartik\widgets\AlertBlock;
 
 /* @var $this yii\web\View */
 
-$this->title = 'SELAMAT DATANG DI ISTANA TRAVEL';
+$this->title = 'Welcome To Traviora';
 
 
 ?>
