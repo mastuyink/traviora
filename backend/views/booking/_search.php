@@ -162,7 +162,7 @@ $this->registerJs("
                 timeout : 10000,
              });
         ']); ?>
-        <?= Html::a('Refresh Data', '/booking/index', ['class' => 'btn btn-danger']); ?>
+        <?= Html::a('Reload', '/booking/index', ['class' => 'btn btn-danger']); ?>
    </div>
     </div>
 

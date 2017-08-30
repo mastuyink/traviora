@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
 $this->registerJs("
 $(document).ready(function(){
-  
+
 })
 $('#filter').on('click',function(){
     $('#search-form').toggle(300);
@@ -32,7 +32,7 @@ $('#filter').on('click',function(){
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
 <div class="col-md-12">
-   <center><strong id="filter" class="btn btn-block btn-danger">Filter Data</strong></center>
+   <center><strong id="filter" class="btn btn-block btn-success">Filter Data</strong></center>
      <div id="search-form" style="display:none" > <?= $this->render('_search', [
         'searchModel' => $searchModel,
         'noOrder'=>$noOrder,
@@ -50,8 +50,8 @@ $('#filter').on('click',function(){
         'id'=>'form-sts',
         'onchange'=>'
             var sts = $(this).val();
-
-            if (sts == "" ) {
+            var keys = $("#grid-booking").yiiGridView("getSelectedRows");
+            if (sts == "" || keys == "") {
                 $("#btn-submit").hide(200);
             }else{
                  $("#btn-submit").show(200);
@@ -62,13 +62,13 @@ $('#filter').on('click',function(){
     <?= Html::a('Submit',null, [
             'id'=>'btn-submit',
             'style'=>'display:none',
-            'class' => 'btn btn-info',
+            'class' => 'btn btn-success',
             'onclick'=>'
         var keys = $("#grid-booking").yiiGridView("getSelectedRows");
         var sts = $("#form-sts").val();
        
         if (keys == "" ) {
-            alert("Please Checkbox First");
+            alert("Please Select Checkbox First");
         }else{
             $("#load").html("<center><img src=../../line.svg width=75 height=75></center>");
             $("#load").show(500);
@@ -78,6 +78,7 @@ $('#filter').on('click',function(){
                 async: true, 
                 data: {blk:keys, status:sts},
                 success: function() {
+                    $("#btn-submit").hide(100);
                     $("#form-sts").val("");
                     $("#load").hide(500);
                     $("#load").html("");

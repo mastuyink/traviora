@@ -86,7 +86,8 @@ return [
             'rules' => [
                  
                  '/booking/term-service/<name>' => '/booking/term-service',
-                 '<lokasi>/<kategori>/<slug>'     => '/posting/view',
+                 '<lokasi>/<kategori>/<slug>'   => '/posting/view',
+              //   '<lokasi>'                     => '/site/lokasi',
                  '/posting/view/<slug>'         => '/posting/view',
                  '/timeout'                     => '/site/timeout',
                  '/sign-in'                     => '/site/login',
