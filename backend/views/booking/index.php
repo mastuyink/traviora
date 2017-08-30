@@ -50,8 +50,7 @@ $('#filter').on('click',function(){
         'id'=>'form-sts',
         'onchange'=>'
             var sts = $(this).val();
-            var keys = $("#grid-booking").yiiGridView("getSelectedRows");
-            if (sts == "" || keys == "") {
+            if (sts == "") {
                 $("#btn-submit").hide(200);
             }else{
                  $("#btn-submit").show(200);
