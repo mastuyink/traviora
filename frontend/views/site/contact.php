@@ -74,7 +74,7 @@ $config = ['template'=>"{input}\n{error}\n{hint}"];
                 ?>
 
                 <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
-                    'template' => '<div class="row"><div class="col-md-6">{input}</div><div class="col-md-3">{image}</div></div>',
+                    'template' => '<div class="row"><div class="col-md-6">{input}</div><div class="col-md-3">{image} </div></div>Click Text Image To Reload Chapta',
                 ])->label('Chaptha') ?>
 
                 <div class="form-group">
