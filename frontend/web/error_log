@@ -1,0 +1,128 @@
+[28-Aug-2017 16:00:30 Asia/Makassar] An Error occurred while handling another error:
+PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php:646
+Stack trace:
+#0 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php(646): PDO->__construct('mysql:host=loca...', 'root', '', NULL)
+#1 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php(579): yii\db\Connection->createPdoInstance()
+#2 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php(928): yii\db\Connection->open()
+#3 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php(915): yii\db\Connection->getMasterPdo()
+#4 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Command.php(910): yii\db\Command->prepare(true)
+#6 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Query.php(213): yii\db\Command->queryAll()
+#8 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/ActiveQuery.php(135): yii\db\Query->all(NULL)
+#9 /home/traviora/public_html/travel/frontend/controllers/SiteController.php(36): yii\db\ActiveQuery->all()
+#10 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Component.php(650): frontend\controllers\SiteController->behaviors()
+#11 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Component.php(533): yii\base\Component->ensureBehaviors()
+#12 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Controller.php(272): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#13 /home/traviora/public_html/travel/vendor/yiisoft/yii2/web/Controller.php(164): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#14 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#15 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('error', Array)
+#16 /home/traviora/public_html/travel/vendor/yiisoft/yii2/web/ErrorHandler.php(97): yii\base\Module->runAction('site/error')
+#17 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\db\Exception))
+#18 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\db\Exception))
+#19 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php:584
+Stack trace:
+#0 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php(928): yii\db\Connection->open()
+#1 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php(915): yii\db\Connection->getMasterPdo()
+#2 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Command.php(910): yii\db\Command->prepare(true)
+#4 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Query.php(213): yii\db\Command->queryAll()
+#6 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/ActiveQuery.php(135): yii\db\Query->all(NULL)
+#7 /home/traviora/public_html/travel/frontend/controllers/SiteController.php(36): yii\db\ActiveQuery->all()
+#8 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Component.php(650): frontend\controllers\SiteController->behaviors()
+#9 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Component.php(533): yii\base\Component->ensureBehaviors()
+#10 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Controller.php(272): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#11 /home/traviora/public_html/travel/vendor/yiisoft/yii2/web/Controller.php(164): yii\base\Controller->beforeAction(Object(yii\web\ErrorAction))
+#12 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\web\ErrorAction))
+#13 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('error', Array)
+#14 /home/traviora/public_html/travel/vendor/yiisoft/yii2/web/ErrorHandler.php(97): yii\base\Module->runAction('site/error')
+#15 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/ErrorHandler.php(111): yii\web\ErrorHandler->renderException(Object(yii\db\Exception))
+#16 [internal function]: yii\base\ErrorHandler->handleException(Object(yii\db\Exception))
+#17 {main}
+Additional Information:
+
+Previous exception:
+PDOException: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php:646
+Stack trace:
+#0 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php(646): PDO->__construct('mysql:host=loca...', 'root', '', NULL)
+#1 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php(579): yii\db\Connection->createPdoInstance()
+#2 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php(928): yii\db\Connection->open()
+#3 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php(915): yii\db\Connection->getMasterPdo()
+#4 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#5 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Command.php(910): yii\db\Command->prepare(true)
+#6 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#7 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Query.php(213): yii\db\Command->queryAll()
+#8 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/ActiveQuery.php(135): yii\db\Query->all(NULL)
+#9 /home/traviora/public_html/travel/frontend/controllers/SiteController.php(36): yii\db\ActiveQuery->all()
+#10 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Component.php(650): frontend\controllers\SiteController->behaviors()
+#11 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Component.php(533): yii\base\Component->ensureBehaviors()
+#12 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Controller.php(272): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#13 /home/traviora/public_html/travel/vendor/yiisoft/yii2/web/Controller.php(164): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#14 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#15 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('', Array)
+#16 /home/traviora/public_html/travel/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('', Array)
+#17 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /home/traviora/public_html/travel/frontend/web/index.php(17): yii\base\Application->run()
+#19 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO) in /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php:584
+Stack trace:
+#0 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php(928): yii\db\Connection->open()
+#1 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Connection.php(915): yii\db\Connection->getMasterPdo()
+#2 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Command.php(219): yii\db\Connection->getSlavePdo()
+#3 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Command.php(910): yii\db\Command->prepare(true)
+#4 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#5 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/Query.php(213): yii\db\Command->queryAll()
+#6 /home/traviora/public_html/travel/vendor/yiisoft/yii2/db/ActiveQuery.php(135): yii\db\Query->all(NULL)
+#7 /home/traviora/public_html/travel/frontend/controllers/SiteController.php(36): yii\db\ActiveQuery->all()
+#8 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Component.php(650): frontend\controllers\SiteController->behaviors()
+#9 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Component.php(533): yii\base\Component->ensureBehaviors()
+#10 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Controller.php(272): yii\base\Component->trigger('beforeAction', Object(yii\base\ActionEvent))
+#11 /home/traviora/public_html/travel/vendor/yiisoft/yii2/web/Controller.php(164): yii\base\Controller->beforeAction(Object(yii\base\InlineAction))
+#12 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Controller.php(154): yii\web\Controller->beforeAction(Object(yii\base\InlineAction))
+#13 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Module.php(523): yii\base\Controller->runAction('', Array)
+#14 /home/traviora/public_html/travel/vendor/yiisoft/yii2/web/Application.php(102): yii\base\Module->runAction('', Array)
+#15 /home/traviora/public_html/travel/vendor/yiisoft/yii2/base/Application.php(380): yii\web\Application->handleRequest(Object(yii\web\Request))
+#16 /home/traviora/public_html/travel/frontend/web/index.php(17): yii\base\Application->run()
+#17 {main}
+Additional Information:
+
+$_SERVER = [
+    'PATH' => '/bin:/usr/bin:/usr/local/bin',
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate',
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.5',
+    'HTTP_CONNECTION' => 'keep-alive',
+    'HTTP_COOKIE' => 'advanced-frontend=feed25ba603f6c1a5b3929645dcfd79a; _csrf-frontend=c87e2fb6b8aec6a710c4886f8a9ca522485959a16d26ecef8568b1fdae325a5ea%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22%F0%FF7%21t%B8%09XM%EF%25%85%1D%E5i%05%2B%AA%D8%DF%5D%B4ov%E7%A1r%E8%ED%E2%D8Y%22%3B%7D; advanced-backend=9o2i0a6q8kpe2eesj07a3hqmt7; _csrf-backend=74f15c657bd78a9d7bed27cdf754db2f8cca0be984d94348847b9b1ae19f34c1a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ja%25%10%19%BA%7C%11%F9c%B2%AC%C9%F7%BE%8E%19%B8%AF%94%5C%F9%DC%CF%1F%C8%E44%ED%E0%00%3D%22%3B%7D; _identity-backend=693274c2431c8babf4cc18b13384be09120e6a86dfbc5bb9408e6185957693cea%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22VIKVxIN9Ldc0mLcyY8eehFd88gNMLkXQ%22%2C2592000%5D%22%3B%7D; _identity-frontend=ef68fedd3de748d3347cdbf0f66322edc283f3544aba567742345044fd1ac9dda%3A2%3A%7Bi%3A0%3Bs%3A18%3A%22_identity-frontend%22%3Bi%3A1%3Bs%3A46%3A%22%5B3%2C%225qdDNWDKzUbPtPc-TjtkWIFqZQZx6S1p%22%2C2592000%5D%22%3B%7D',
+    'HTTP_HOST' => 'traviora.com',
+    'HTTP_REFERER' => 'http://traviora.com/travel/frontend/',
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:55.0) Gecko/20100101 Firefox/55.0',
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1',
+    'DOCUMENT_ROOT' => '/home/traviora/public_html',
+    'REMOTE_ADDR' => '180.249.131.46',
+    'REMOTE_PORT' => '40670',
+    'SERVER_ADDR' => '198.252.100.4',
+    'SERVER_NAME' => 'traviora.com',
+    'SERVER_ADMIN' => 'webmaster@traviora.com',
+    'SERVER_PORT' => '80',
+    'REQUEST_URI' => '/travel/frontend/web/',
+    'GEOIP_ADDR' => '180.249.131.46',
+    'GEOIP_COUNTRY_CODE' => 'ID',
+    'GEOIP_COUNTRY_NAME' => 'Indonesia',
+    'GEOIP_CONTINENT_CODE' => 'AS',
+    'SCRIPT_FILENAME' => '/home/traviora/public_html/travel/frontend/web/index.php',
+    'QUERY_STRING' => '',
+    'SCRIPT_URI' => 'http://traviora.com/travel/frontend/web/',
+    'SCRIPT_URL' => '/travel/frontend/web/',
+    'SCRIPT_NAME' => '/travel/frontend/web/index.php',
+    'SERVER_PROTOCOL' => 'HTTP/1.1',
+    'SERVER_SOFTWARE' => 'LiteSpeed',
+    'REQUEST_METHOD' => 'GET',
+    'X-LSCACHE' => 'on',
+    'PHP_SELF' => '/travel/frontend/web/index.php',
+    'REQUEST_TIME_FLOAT' => 1503907230.4216849803924560546875,
+    'REQUEST_TIME' => 1503907230,
+]
