@@ -39,9 +39,10 @@ class TPost extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_destinasi', 'content', 'id_author'], 'required'],
+            [['id_destinasi', 'content', 'id_author','slug'], 'required'],
             [['id_destinasi', 'id_author'], 'integer'],
             [['content'], 'string'],
+            [['slug'], 'unique'],
             [['create_at', 'last_update'], 'safe'],
             [['slug'], 'string', 'max' => 50],
             [['gbr_thumbnail'], 'string', 'max' => 255],

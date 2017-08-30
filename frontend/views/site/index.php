@@ -107,7 +107,7 @@ $(document).ready(function(){
 
                      </ul>
 
-                    <center style='padding-left: 0%;'>".Html::a('DETAIL',['/posting/view','lokasi'=>$konten->idDestinasi->idLokasiDestinasi->lokasi,'kategori'=>$konten->idDestinasi->idJenisDestinasi->jenis_destinasi,'slug'=>$konten->slug],['class'=>'btn btn-block btn-primary '])."</center>
+                    <center style='padding-left: 0%;'>".Html::a('DETAIL',['/posting/view','lokasi'=>strtolower($konten->idDestinasi->idLokasiDestinasi->lokasi),'kategori'=>strtolower($konten->idDestinasi->idJenisDestinasi->jenis_destinasi),'slug'=>$konten->slug],['class'=>'btn btn-block btn-primary '])."</center>
                 </div>
                 </div>";
             }
