@@ -9,10 +9,6 @@ use kartik\widgets\AlertBlock;
 /* @var $this yii\web\View */
 
 $this->title = 'Welcome To Traviora';
-$this->registerMetaTag([
-    'name' => 'Traviora',
-    'content' => 'Welcome To Traviora. The Best Traveler partner solution',
-]);
 
 ?>
 <?php 
