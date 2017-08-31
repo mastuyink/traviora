@@ -87,7 +87,7 @@ public function generateBookingNumber($attribute, $length = 4){
     if(!$this->findOne([$attribute =>$kodeBooking])){
         return $kodeBooking;
     }else{
-        return $this->generateUniqueRandomString($attribute, $length);
+        return $this->generateBookingNumber($attribute, $length);
     }
             
 }
