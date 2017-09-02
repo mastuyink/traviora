@@ -90,7 +90,7 @@ $(document).ready(function(){
               foreach ($dataProvider as $key => $konten) {
                  echo "<div class='col-md-4' >
                  <div class='panel panel-default' style='min-height:200%;'>
-                        <div class='panel-heading' style='min-height:125px; max-height:125px;'><a href='".strtolower($konten->idDestinasi->idLokasiDestinasi->lokasi)."/".strtolower($konten->idDestinasi->idJenisDestinasi->jenis_destinasi)."/".strtolower($konten->slug)."'>".Html::img(['/posting/thumb','id'=>$konten->id],['alt'=>'thumbnail','class'=>'img-responsive', 'width'=>'100%','height'=>'100%'])."</a></div>
+                        <div class='panel-heading' style='min-height:125px; max-height:125px;'><a href='".strtolower($konten->idDestinasi->idLokasiDestinasi->lokasi)."/".strtolower($konten->idDestinasi->idJenisDestinasi->jenis_destinasi)."/".strtolower($konten->slug)."'>".Html::img(['/posting/thumb','id'=>$konten->id],['alt'=>'thumb','class'=>'img-responsive', 'width'=>'100%','height'=>'100%'])."</a></div>
                      <ul class='list-group'>
                       <li class='list-group-item'><center>".Html::a($konten->idDestinasi->nama_destinasi,['/posting/view','lokasi'=>strtolower($konten->idDestinasi->idLokasiDestinasi->lokasi),'kategori'=>strtolower($konten->idDestinasi->idJenisDestinasi->jenis_destinasi),'slug'=>strtolower($konten->slug)],['class'=>'btn ','style'=>'color:black'])."</center></li>";
                       
