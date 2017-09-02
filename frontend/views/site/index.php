@@ -38,6 +38,9 @@ $this->registerMetaTag([
   width: 100%;
   height: auto;
   }
+  .panel-heading{
+    padding: 0px 0px 0px 0px;
+  }
 </style>
 
 <div style="padding-bottom: 2%;" id="search-form" class="col-md-12 col-md-offset-1">
