@@ -787,7 +787,7 @@ Name Infant <?= $key+1 ?>
         -o-border-radius: 7px !important;
         -ms-border-radius: 7px !important;
         /*styles from button.jsp */ line-height: 1.45em; padding: 7px 15px 8px; font-size: 1em;
-         padding-bottom: 7px; margin: 0 auto 16px;">Confirmation</a>
+         padding-bottom: 7px; margin: 0 auto 16px;">Contact Us</a>
 </center>
 </td>
 </tr>

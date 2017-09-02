@@ -26,7 +26,7 @@ QRCode::png($isi_teks,$tempdir.$namafile,$quality,$ukuran,$padding);
                         <tr valign="center">    
                             <td width="20" valign="top" align="center"> </td>
                             <td height="64" align="left">
-                                <img alt="banner" style="width:47%; height:15%;" src="<?php echo Yii::$app->basePath.'/File-Pesanan/text.png' ?>" border="0"><br><br>
+                                <img alt="Logo" style="width: 50%;" src="<?php echo Yii::$app->basePath.'/File-Pesanan/receipt.png' ?>"  border="0"><br><br>
                                 
                             </td>   
 

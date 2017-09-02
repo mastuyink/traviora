@@ -7,7 +7,7 @@ $params = array_merge(
 );
 
 return [
-     'homeUrl' => '/',
+  //   'homeUrl' => '/',
     'id' => 'app-frontend',
    // 'homeUrl'=>['/posting/home'],
     'basePath' => dirname(__DIR__),

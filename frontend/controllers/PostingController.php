@@ -346,14 +346,11 @@ public function actionView($slug)
             
              if ( $session['booking.pax_request'] != null) {
                  $Dest->stok_seat                = $Dest->stok_seat + $session['booking.pax_request'];
-                 //$Dest->seat_terjual             = $Dest->seat_terjual - $session['booking.pax_request'];
                  $session['booking.pax_request'] = $modelBooking->pax_request;
                  $Dest->stok_seat                = $Dest->stok_seat - $modelBooking->pax_request;
-                 //$Dest->seat_terjual             = $Dest->seat_terjual + $session['booking.pax_request'];
              }else{
                  $session['booking.pax_request'] = $modelBooking->pax_request;
                  $Dest->stok_seat                = $Dest->stok_seat - $modelBooking->pax_request;
-                // $Dest->seat_terjual             = $Dest->seat_terjual + $session['booking.pax_request'];
              }
              
              $session['destinasi.nama_destinasi']  = $model->idDestinasi->nama_destinasi;

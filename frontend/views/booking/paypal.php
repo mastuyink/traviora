@@ -12,7 +12,8 @@ use yii\helpers\Url;
 </head>
 <body>
 <?php
-
+$biaya = $modelpembayaranPaypal->idBooking->total_biaya;
+$currency = $modelpembayaranPaypal->currency;
 $this->registerJs("
 
     paypal.Button.render({
@@ -39,17 +40,17 @@ $this->registerJs("
                             {
                                 amount: 
                                  {
-                                    total: '".$session['booking.total_biaya']."',
-                                    currency: '".$session['currency.id']."',
+                                    total: '".$biaya."',
+                                    currency: '".$currency."',
                                  },
                                 item_list: {
                                         items: [
                                         {
-                                        name: 'Payment Indo Gateway From : ".$session['customer.email']."',
-                                        description: ' Booking Code = ".$session['booking.id']."',
+                                        name: 'Payment Traviora.com From : ".$modelpembayaranPaypal->idBooking->idCustomer->email."- Booking Code".$modelpembayaranPaypal->id_booking."',
+                                        description: '-',
                                         quantity: '1',
-                                        price: '".$session['booking.total_biaya']."',
-                                        currency: '".$session['currency.id']."'
+                                        price: '".$biaya."',
+                                        currency: '".$currency."'
                                         }
                                         ]
                                 }

@@ -432,7 +432,7 @@ body {
 
 <span style="display:inline;">
 </span>
-E-ticket Confirmation Indogateway
+E-ticket Confirmation Traviora
 
 <span style="display:inline;">
 <br>
@@ -459,7 +459,7 @@ Date : <strong> <?= date('d-m-Y') ?></strong><br><br>
 <table contenteditable="false">
 <tbody>
 <tr>
-<td valign="bottom" align="justify">Dear <!--?= $session['customer.nama_customer'] ?-->. <p>Thank's for trust to choose indogateway as your travel partner. We have confirmed your order and payment. Together with this email we send the e-ticket contained in the attachment. Please take the tiket on the departure of your trip as a justification. If any information related to your trip we will contact you leader through the following contact</p><span style="display:inline;">
+<td valign="bottom" align="justify">Dear <?= $modelBooking->idCustomer->nama_customer ?>. <p>Thank's for trust to choose Traviora as your travel partner. We have confirmed your order and payment. Together with this email we send the e-ticket contained in the attachment. Please take the tiket on the departure of your trip as a justification. If any information related to your trip we will contact you leader through the following contact</p><span style="display:inline;">
   </span></td>
 
   </tr>
@@ -524,7 +524,7 @@ Date : <strong> <?= date('d-m-Y') ?></strong><br><br>
 
 <center>
 <p>Thank you for your order, we always look forward to your arrival again, if any criticism and suggestion can be contsct by email or can contact us at contact form, which can be accessed from following link.</p>
-<a class="button_blue" href="http://home.travel.com/contact" target="_BLANK" style="
+<a class="button_blue" href="https://traviora.com/contact" target="_BLANK" style="
         text-decoration:none;
         background: #FF3421;
         ont-family:HelveticaNeueLight,HelveticaNeue-Light,Helvetica Neue Light,HelveticaNeue,Helvetica,Arial,sans-serif;
@@ -544,11 +544,11 @@ Date : <strong> <?= date('d-m-Y') ?></strong><br><br>
 </center><br>
 
 <!-- EmailContentPayeeTransaction : end -->
-Questions? Contact Us at <strong>reservation@indogateway.com</strong><br><br>
+Questions? Contact Us at <strong>reservation@Traviora.com</strong><br><br>
 
  <li>Perum Permata Ariza Blok O/2 Mekarsari, Jimbaran. Bali - Indonesia.</li>
  <li>+62-813-5330-4990</li>
- <li><a id="button_text" style="text-decoration: none; font-size: 110%" class="applefix" href="indogateway.com">https://IndoGateway.com</a></li>
+ <li><a id="button_text" style="text-decoration: none; font-size: 110%" class="applefix" href="Traviora.com">https://Traviora.com</a></li>
  <br></div><p></p>
                                 <span style="font-weight:bold; color:#444;">
                                 </span>
@@ -602,7 +602,7 @@ Questions? Contact Us at <strong>reservation@indogateway.com</strong><br><br>
                                 <span style="font-family:Calibri, Trebuchet, Arial, sans serif; font-size:13px; !important color:#8c8c8c;">  
                                     <!--  tracking -->
                                     <table id="emailFooter" style="padding-top:20px;font:12px Arial, Verdana, Helvetica, sans-serif;color:#292929;" width="100%" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td>
-                                    <p>Copyright © 2017 IndoGateway.com. All rights reserved.</p>
+                                    <p>Copyright © 2017 Traviora.com. All rights reserved.</p>
                                    </td></tr></tbody></table>
 
                                 </span>

@@ -161,8 +161,8 @@ public function generateBookingNumber($attribute, $length = 4){
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTPembayarans()
+    public function getTPembayaran()
     {
-        return $this->hasMany(TPembayaran::className(), ['id_booking' => 'id']);
+        return $this->hasOne(TPembayaran::className(), ['id_booking' => 'id']);
     }
 }
