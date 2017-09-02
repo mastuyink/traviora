@@ -423,8 +423,8 @@ body {
                     <table style="margin-bottom:10px; margin-top:15px;" width="100%" contenteditable="false" cellspacing="0" cellpadding="0" border="0">
                         <tbody><tr valign="bottom">    
                             <td style="border-bottom:2px solid black;" width="20" valign="top" align="center"> </td>
-                            <td style="border-bottom:2px solid black;" height="64" align="left">
-                                <img alt="Logo" style="width:85%; height:85%;" src="http://traviora.com/traviora.png"  border="0"><br><br>
+                            <td style="border-bottom:2px solid black;" width="100" align="left">
+                                <img alt="Logo" style="width:65%;" src="https://traviora.com/traviora.png"  border="0"><br><br>
                             </td>   
                             <td style="border-bottom:2px solid black;" width="40" valign="top" align="center"> </td>
                             <td style="border-bottom:2px solid black;" align="right">
@@ -772,7 +772,7 @@ Name Infant <?= $key+1 ?>
 <td colspan="3" style="width:100%;text-align:right; padding:10px 0 20px 0;">
 <center>
 <p>Please contact us immediately if there is a trip problem. you can reply this email or contact form Via link Bellow</p>
-<a class="button_blue" href="http://traviora.com/contact"
+<a class="button_blue" href="https://traviora.com/contact"
  style="text-decoration:none;background: #0079c1;
         font-family:HelveticaNeueLight,HelveticaNeue-Light,Helvetica Neue Light,HelveticaNeue,Helvetica,Arial,sans-serif;
         font-weight:300;

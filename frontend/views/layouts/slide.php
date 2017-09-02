@@ -22,52 +22,32 @@ $this->registerMetaTag([
 <html lang="<?= Yii::$app->language ?>">
 <head>
 <style type="text/css">
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
+/* Carousel base class */
 .carousel {
   margin-bottom: 60px;
 }
-
-.carousel-control {
-  top: 76%;
-}
-
+/* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
 }
 
+/* Declare heights because of positioning of img element */
 .carousel .item {
   height: 500px;
-  background-color:#bbb;
-  overflow:hidden;
+  background-color: #777;
 }
-.carousel img {
+.carousel-inner > .item > img {
   position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  min-width: 1278px;
   height: 500px;
+  /*height: auto;
+  min-height: 500px;
+  max-height: 1000px;*/
 }
-
-
-/* RESPONSIVE CSS
--------------------------------------------------- */
-@media (max-width: 768px) {
-
-  .carousel-inner>.item>img, .carousel-inner>.item>a>img {
-    max-width:inherit;
-  }
-
-  .carousel-caption p {
-    margin-bottom: 20px;
-    font-size: 21px;
-    line-height: 1.4;
-  }
-}
-
-
-</style>
+  </style>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">

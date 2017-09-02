@@ -155,7 +155,7 @@ protected function findBook($token,$data)
 
              //to guest
        // $file = ;
-           Yii::$app->mailReservation->compose()->setFrom('reservation@traviora.com')
+        /*   Yii::$app->mailReservation->compose()->setFrom('reservation@traviora.com')
             ->setTo($modelBooking->idCustomer->email)
             ->setSubject('E-TIKET TRAVIORA')
             ->setHtmlBody($this->renderAjax('email-ticket',['modelBooking'=>$modelBooking]))
@@ -185,7 +185,7 @@ protected function findBook($token,$data)
            FileHelper::removeDirectory($saveTiket);
            $modelDestinasi = $this->findDestinasi($modelBooking->id_destinasi);
            $modelDestinasi->seat_terjual = $modelDestinasi->seat_terjual + count($TravelerAnak) + count($TravelerDewasa);
-           $modelDestinasi->save();
+           $modelDestinasi->save();*/
             
             Yii::$app->getSession()->setFlash(
                                             'success','Validation Success. Ticket Send To Guest' );

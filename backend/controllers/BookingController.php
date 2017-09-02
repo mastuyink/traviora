@@ -69,11 +69,11 @@ class BookingController extends Controller
             $modelAntar     = TAntar::findOne(['id_booking'=>$modelBooking->id]);
 
             //to supplier
-            $message = 'Message Remind Booking Supplier Indogateway';
+            $message = 'Message Remind Booking Supplier Traviora';
             Yii::$app->mailReservation->compose()
             ->setFrom('reservation@traviora.com')
             ->setTo($modelBooking->idDestinasi->idSupplier->email)
-            ->setSubject('Remind Booking Supplier Indogateway')
+            ->setSubject('Remind Booking Supplier Traviora')
             ->setHtmlBody($this->renderAjax('/validasi-pembayaran/email-supplier',[
                 'modelBooking'   =>$modelBooking,
                 'modelCustomer'  =>$modelCustomer,

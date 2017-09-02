@@ -423,7 +423,7 @@ body {
                         <tbody><tr valign="bottom">    
                             <td style="border-bottom:2px solid black;" width="20" valign="top" align="center"> </td>
                             <td style="border-bottom:2px solid black;" height="64" align="left">
-                                <img alt="Logo" style="width:85%; height:85%;" src="" border="0"><br><br>
+                                <img alt="Logo" style="width:85%; height:85%;" src="https://traviora.com/traviora.png" border="0"><br><br>
                             </td>   
                             <td style="border-bottom:2px solid black;" width="40" valign="top" align="center"> </td>
                             <td style="border-bottom:2px solid black;" align="right">
