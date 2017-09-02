@@ -113,14 +113,14 @@ $this->registerMetaTag([
      <?php endforeach; ?>
   </ol>
 <div class="item active">
-      <img src="/site/main-carrousel?id=<?php echo Yii::$app->view->params['carrousel'][0]->id?>" alt="...">
+      <img src="/site/main-carrousel?id=<?php echo Yii::$app->view->params['carrousel'][0]->id?>" alt="slider">
       <div class="carousel-caption">
        
       </div>
     </div>
   <?php foreach (array_slice(Yii::$app->view->params['carrousel'],1) as $key => $value):?>
     <div class="item">
-      <img src="/site/main-carrousel?id=<?php echo $value->id ?>" alt="...">
+      <img src="/site/main-carrousel?id=<?php echo $value->id ?>" alt="slider">
       <div class="carousel-caption">
        
       </div>
