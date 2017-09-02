@@ -181,8 +181,8 @@ protected function findBook($token,$data)
             ->send();
 
 
-          // $modelBooking->save();
-         //  FileHelper::removeDirectory($saveTiket);
+           $modelBooking->save();
+           FileHelper::removeDirectory($saveTiket);
            $modelDestinasi = $this->findDestinasi($modelBooking->id_destinasi);
            $modelDestinasi->seat_terjual = $modelDestinasi->seat_terjual + count($TravelerAnak) + count($TravelerDewasa);
            $modelDestinasi->save();

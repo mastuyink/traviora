@@ -1027,14 +1027,6 @@ protected function sendTicket($modelBooking)
             ->attach($saveTiket."E-Tiket.pdf")
             ->attach($saveTiket."Receipt.pdf")
             ->send();
-
-             //to Guest
-           Yii::$app->mailReservation->compose()->setFrom('reservation@traviora.com')
-            ->setTo($modelBooking->idCustomer->email)
-            ->setSubject('E-TIKET TRAVIORA.COM')
-            ->setHtmlBody($this->renderAjax('email-ticket',['modelBooking'=>$modelBooking]))
-            ->attach($saveTiket."E-Tiket.pdf")
-            ->send();
          
             //to supplier
             Yii::$app->mailReservation->compose()->setFrom('reservation@traviora.com')
