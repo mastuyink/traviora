@@ -33,6 +33,11 @@ $this->registerMetaTag([
     align-content: left;
     align-items: left;
   }
+  .img-thum{
+  display: block;
+  width: 100%;
+  height: auto;
+  }
 </style>
 
 <div style="padding-bottom: 2%;" id="search-form" class="col-md-12 col-md-offset-1">
@@ -95,9 +100,9 @@ $this->registerMetaTag([
               foreach ($dataProvider as $key => $konten) {
                  echo "<div class='col-md-4' >
                  <div class='panel panel-default' style='min-height:200%;'>
-                        <div class='panel-heading' style='min-height:125px; max-height:125px;'><a href='".strtolower($konten->idDestinasi->idLokasiDestinasi->lokasi)."/".strtolower($konten->idDestinasi->idJenisDestinasi->jenis_destinasi)."/".strtolower($konten->slug)."'>".Html::img(['/posting/thumb','id'=>$konten->id],['alt'=>'thumb','class'=>'img-responsive', 'width'=>'100%','height'=>'100%'])."</a></div>
+                        <div class='panel-heading' style='min-height:100%;'><a href='".strtolower($konten->idDestinasi->idLokasiDestinasi->lokasi)."/".strtolower($konten->idDestinasi->idJenisDestinasi->jenis_destinasi)."/".strtolower($konten->slug)."'>".Html::img(['/posting/thumb','id'=>$konten->id],['alt'=>'thumb','class'=>'img-thum', 'width'=>'100%','height'=>'auto'])."</a></div>
                      <ul class='list-group'>
-                      <li class='list-group-item'><center>".Html::a($konten->idDestinasi->nama_destinasi,['/posting/view','lokasi'=>strtolower($konten->idDestinasi->idLokasiDestinasi->lokasi),'kategori'=>strtolower($konten->idDestinasi->idJenisDestinasi->jenis_destinasi),'slug'=>strtolower($konten->slug)],['class'=>'btn ','style'=>'color:black'])."</center></li>";
+                      <li class='list-group-item'><center>".Html::a($konten->idDestinasi->nama_destinasi,['/posting/view','lokasi'=>strtolower($konten->idDestinasi->idLokasiDestinasi->lokasi),'kategori'=>strtolower($konten->idDestinasi->idJenisDestinasi->jenis_destinasi),'slug'=>strtolower($konten->slug)],['style'=>'color:black; text-decoration: none;'])."</center></li>";
                       
                       echo "<li class='list-group-item'><div class='glyphicon glyphicon-briefcase'> Start From ".$kurs->id." ". round($lowerCost[$key] / $kurs->round_kurs,2)." / pax</div> </li>";
                       
