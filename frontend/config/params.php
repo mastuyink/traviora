@@ -1,6 +1,6 @@
 <?php
 return [
-    'webEmail' => 'web@istanatravel.com',
-    'reservationEmail' => 'reservation@indogateway.com',
+    'webEmail' => 'web@traviora.com',
+    'reservationEmail' => 'reservation@traviora.com',
     'user.passwordResetTokenExpire' => 3600,
 ];

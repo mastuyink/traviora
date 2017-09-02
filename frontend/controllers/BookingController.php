@@ -1043,6 +1043,9 @@ protected function sendTicket($modelBooking)
                 ]))
             ->send();
         FileHelper::removeDirectory($saveTiket);
+        $modelDestinasi = $this->findDestinasi($modelBooking->id_destinasi);
+        $modelDestinasi->seat_terjual = $modelDestinasi->seat_terjual + count($TravelerAnak) + count($TravelerDewasa);
+        $modelDestinasi->save();
         $transaction->commit();
             Yii::$app->getSession()->setFlash(
                                             'success','Payment Successfull' );
