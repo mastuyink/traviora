@@ -46,6 +46,7 @@ $this->registerMetaTag([
   /*height: auto;
   min-height: 500px;
   max-height: 1000px;*/
+  
 }
   </style>
     <meta charset="<?= Yii::$app->charset ?>">
