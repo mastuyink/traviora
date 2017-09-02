@@ -11,7 +11,11 @@ use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 
 AppAsset::register($this);
-$this->title = $this->title ? $this->title : 'Welcome To Traviora';
+$this->registerMetaTag([
+    'name' => 'Traviora',
+    'content' => 'Welcome To Traviora. The Best Traveler partner solution',
+]);
+
 
 ?>
 <?php $this->beginPage() ?>
@@ -19,6 +23,9 @@ $this->title = $this->title ? $this->title : 'Welcome To Traviora';
 <html lang="<?= Yii::$app->language ?>">
 <head>
 <style type="text/css">
+.carrousel-inner{
+  height: 100%;
+}
 /* Carousel base class */
 .carousel {
   margin-bottom: 60px;
@@ -97,7 +104,7 @@ $this->title = $this->title ? $this->title : 'Welcome To Traviora';
     NavBar::end();
     ?>
   <center style="margin-top: 49px;" class="block">
-<div style="padding-left: 1px; margin-left: 1px; min-height: 50%; max-height: 50%; max-width:100%;  min-width: 100%;" id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+<div style="max-width:100%;  min-width: 100%;" id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   
 
