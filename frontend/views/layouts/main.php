@@ -11,6 +11,7 @@ use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 
 AppAsset::register($this);
+$this->title = $this->title ? $this->title : 'Welcome To Traviora';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
