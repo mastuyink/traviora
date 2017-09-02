@@ -21,6 +21,11 @@ $(document).ready(function(){
   $('#drop-cur').val('USD');
 });
 ");
+
+$this->registerMetaTag([
+    'name' => 'This Is Name Meta tag Tarviora',
+    'content' => 'Ini Adalah Content dari meta tag',
+]);
 ?>
 <style type="text/css">
   .control-label{
