@@ -50,7 +50,7 @@ use yii\widgets\LinkPager;
 
        ?> 
        </div>
-       <div class=" col-md-12 btn btn-xs btn-danger">
+       <div class=" col-md-12 btn btn-xs btn-info">
   <?php 
   echo LinkPager::widget([
     'pagination' => $pages,
