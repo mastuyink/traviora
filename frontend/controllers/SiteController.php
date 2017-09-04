@@ -176,7 +176,7 @@ public function actionViewLokasi($lokasi){
 
     $dataProviders = $this->findByLokasi($lokasi);
     $countQuery = clone $dataProviders;
-        $pages = new Pagination(['totalCount' => $countQuery->count(),'defaultPageSize' => 2]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(),'defaultPageSize' => 10]);
         $dataProvider = $dataProviders->offset($pages->offset)
         ->limit($pages->limit)
         ->all();
@@ -310,7 +310,7 @@ public function actionIndex()
     }
 
      $countQuery = clone $dataProviders;
-        $pages = new Pagination(['totalCount' => $countQuery->count(),'defaultPageSize' => 2]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(),'defaultPageSize' => 10]);
         $dataProvider = $dataProviders->offset($pages->offset)
         ->limit($pages->limit)
         ->all();
