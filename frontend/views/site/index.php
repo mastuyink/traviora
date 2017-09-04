@@ -26,6 +26,11 @@ $this->registerMetaTag([
     'name' => 'description',
     'content' => 'Welcome To Content description traviora.com',
 ]);
+$this->registerMetaTag([
+    'name' => 'keywords',
+    'content' => 'travel bali',
+]);
+
 ?>
 <style type="text/css">
   .control-label{
