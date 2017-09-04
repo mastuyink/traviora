@@ -32,7 +32,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'keywords',
             'slug',
            // 'create_at',
-            'last_update',
+            ['header'=>'Lats Update',
+            'value'=>'last_update'],
+         
             ['header'=>'Author',
             'value'=>'idAuthor.username'],
             
