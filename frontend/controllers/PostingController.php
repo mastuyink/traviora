@@ -25,6 +25,7 @@ use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
 use yii\web\UploadedFile;
 use yii\filters\AccessControl;
+use yii\helpers\FileHelper;
 
 
 /**
@@ -95,25 +96,36 @@ class PostingController extends Controller
         // $this->layout  = 'no-tab';
         $model            = new TPost();
         $destinasi        = ArrayHelper::map(VPostDest::find()->where(['id_destinasi'=>null])->all(), 'id', 'nama_destinasi');
+        $description = ArrayHelper::map($this->findAllModel(),'description','description');
+        $keywords = ArrayHelper::map($this->findAllModel(),'keywords','keywords');
         $model->id_author = Yii::$app->user->identity->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            $model->thumbnail = UploadedFile::getInstance($model, 'thumbnail');
-            $model->carrousel = UploadedFile::getInstances($model, 'carrousel');
-            $model->save();
-            $slug             = $model->slug;
-            $id_post          = $model->id;
-
-            if ($model->upload($slug) && $model->carnew($id_post,$slug)) {
-                
-                  return $this->redirect('index');
-               }
+        try {
+            $transaction = Yii::$app->db->beginTransaction();
+                $model->thumbnail = UploadedFile::getInstance($model, 'thumbnail');
+                $model->carrousel = UploadedFile::getInstances($model, 'carrousel');
+                $model->save();
+                $slug             = $model->slug;
+                $id_post          = $model->id;
+                $model->upload($slug);
+                $model->carnew($id_post,$slug);
+            $transaction->commit();
+                return $this->redirect('index');
+                   
+        } catch (Exception $e) {
+            $transaction->rollback();
+                throw $e;
+        }
+           
             
            
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'destinasi' => $destinasi
+                'destinasi' => $destinasi,
+                'description'=>$description,
+                'keywords'=>$keywords,
             ]);
         }
     }
@@ -123,7 +135,8 @@ class PostingController extends Controller
         //$this->layout = 'no-tab';
         $model = $this->findModel($id);
         $destinasi = ArrayHelper::map(TDestinasi::find()->all(), 'id', 'nama_destinasi');
-
+        $description = ArrayHelper::map($this->findAllModel($id),'description','description');
+        $keywords = ArrayHelper::map($this->findAllModel(),'keywords','keywords');
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
                $model->thumbnail = UploadedFile::getInstance($model, 'thumbnail');
                $model->carrousel = UploadedFile::getInstances($model, 'carrousel');
@@ -147,7 +160,9 @@ class PostingController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'destinasi' => $destinasi
+                'destinasi' => $destinasi,
+                'description'=>$description,
+                'keywords'=>$keywords,
             ]);
         }
     }
@@ -541,7 +556,10 @@ protected function cari($dest,$tgl){
    
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+
+       $model =  $this->findModel($id);
+       FileHelper::removeDirectory(Yii::$app->basePath.'/posting/'.$model->slug);
+       $model->delete();
 
         return $this->redirect(['index']);
     }
@@ -597,6 +615,14 @@ protected function checkConnection(){
                  
     }
 
+    protected function findAllModel($param = null)
+    {
+        if (($model = TPost::find('id != :param',[':param'=>$param])->all()) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('Post Is Empty');
+        }
+    }
     protected function findModel($id)
     {
         if (($model = TPost::findOne($id)) !== null) {

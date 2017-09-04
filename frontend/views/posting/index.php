@@ -28,10 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
             //'id',
             'idDestinasi.nama_destinasi',
-            
-            'create_at',
-            'last_update',
+            'description',
+            'keywords',
             'slug',
+           // 'create_at',
+            'last_update',
             ['header'=>'Author',
             'value'=>'idAuthor.username'],
             

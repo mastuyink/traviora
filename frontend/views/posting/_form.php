@@ -20,14 +20,14 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'id_destinasi', ['options' => ['class' => 'form-group col-md-12']])->widget(Select2::classname(), [
                 'data' => $destinasi,
-                'options' => ['placeholder' => 'Pilih Destinasi'],
+                'options' => ['id'=>'form-destinasi','placeholder' => 'Pilih Destinasi'],
                 'pluginOptions' => [
                 'allowClear' => true,
                  
                 ],
                 'pluginEvents' => [
                 "change" => "function() {
-                     var dst = $('select option:selected').text();
+                     var dst = $('#form-destinasi option:selected').text();
                      $.ajax({
                      url : '".Url::to(["slug"])."',
                      type: 'POST',
@@ -43,10 +43,34 @@ use yii\helpers\Url;
                 ]
                 ]);
                  ?>
+    <?= $form->field($model, 'description', [
+           'options' => ['id'=>'form-description','class' => 'form-group col-md-12'],
+        ])->widget(Select2::classname(), [
+                'data' => $description,
+                'options' => ['placeholder' => 'Input Unique Description'],
+                'pluginOptions' => [
+                'allowClear' => true,
+                'tags'=>true,
+                 
+                ],
+                ]);
+    ?>
+    <?= $form->field($model, 'keywords', [
+           'options' => ['id'=>'form-keywords','class' => 'form-group col-md-12'],
+        ])->widget(Select2::classname(), [
+                'data' => $keywords,
+                'options' => ['placeholder' => 'Input keywords'],
+                'pluginOptions' => [
+                'allowClear' => true,
+                'tags'=>true,
+                 
+                ],
+                ]);
+    ?>
     <?= $form->field($model, 'slug', [
     'options' => ['id'=>'form-slug','class' => 'form-group col-md-12','placeholder' => 'Pilih Destinasi'],
     'hintType' => ActiveField::HINT_SPECIAL,
-    'hintSettings' => ['placement' => 'right', 'onLabelClick' => true, 'onLabelHover' => false]
+    'hintSettings' => ['placement' => 'right', 'onLabelClick' => true, 'onLabelHover' => true]
    ])->textInput()->hint('text yang Akan Di tampilkan Pada Url, Pisahkan Setiap Kata Dengan tanda Strip <strong>-</strong>');?>
 
    <?=  $form->field($model, 'thumbnail', ['options' => ['class' => 'form-group col-md-12','placeholder' => 'Pilih Destinasi']])->widget(FileInput::classname(), [

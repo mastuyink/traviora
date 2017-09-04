@@ -39,12 +39,13 @@ class TPost extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_destinasi', 'content', 'id_author','slug'], 'required'],
+            [['id_destinasi', 'content', 'id_author','slug','description'], 'required'],
             [['id_destinasi', 'id_author'], 'integer'],
             [['content'], 'string'],
-            [['slug'], 'unique'],
+            [['slug','description'], 'unique'],
             [['create_at', 'last_update'], 'safe'],
-            [['slug'], 'string', 'max' => 50],
+            [['slug','keywords'], 'string', 'max' => 50],
+            [['description'], 'string', 'max' => 110],
             [['gbr_thumbnail'], 'string', 'max' => 255],
             [['id_author'], 'exist', 'skipOnError' => true, 'targetClass' => \common\models\User::className(), 'targetAttribute' => ['id_author' => 'id']],
             [['id_destinasi'], 'exist', 'skipOnError' => true, 'targetClass' => TDestinasi::className(), 'targetAttribute' => ['id_destinasi' => 'id']],
@@ -60,11 +61,14 @@ class TPost extends \yii\db\ActiveRecord
             'id' => 'ID',
             'id_destinasi' => 'Name Of Trip',
             'slug' => 'Slug',
+            'description' => 'Description',
+            'keywords' => 'Keywords',
             'gbr_thumbnail' => 'Gbr Thumbnail',
             'content' => 'Content',
             'id_author' => 'Id Author',
             'create_at' => 'Create At',
             'last_update' => 'Last Update',
+
         ];
     }
 

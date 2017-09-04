@@ -10,7 +10,9 @@ use yii\bootstrap\Carousel;
 
 /* @var $this yii\web\View */
 $this->title = $model->idDestinasi->nama_destinasi;
-//$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = strtolower($model->idDestinasi->idLokasiDestinasi->lokasi);
+$this->params['breadcrumbs'][] = strtolower($model->idDestinasi->idJenisDestinasi->jenis_destinasi);
+$this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <?php

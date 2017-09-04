@@ -10,7 +10,7 @@ return [
         'decimalSeparator' => ',',
         'thousandSeparator' => '.',
         'currencyCode' => 'Rp ',
-        'nullDisplay' => 'Kosong',          
+        'nullDisplay' => '-',          
     ],
 
         'cache' => [

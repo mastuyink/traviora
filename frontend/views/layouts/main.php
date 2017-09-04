@@ -66,7 +66,7 @@ $this->title = $this->title ? $this->title : 'Welcome To Traviora';
     NavBar::end();
     ?>
 
-                        <div style="padding-top: 5%;" class="col-md-12">
+                       <!-- <div style="padding-top: 5%;" class="col-md-12"> -->
                           <div class="container"> <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?></div>
@@ -75,7 +75,7 @@ $this->title = $this->title ? $this->title : 'Welcome To Traviora';
         <?= $content ?>
                          
       
-    </div>
+   <!-- </div> -->
 </div>
 
 
