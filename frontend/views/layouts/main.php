@@ -38,8 +38,8 @@ $this->title = $this->title ? $this->title : 'Welcome To Traviora';
     ]);
     $menuItems = [
         ['label' => 'HOME', 'url' => ['/']],
-        ['label' => 'Adventure', 'url' => ['/destinasi/adventure']],
-        ['label' => 'Nature', 'url' => ['/destinasi/nature']],
+        //['label' => 'Adventure', 'url' => ['/destinasi/adventure']],
+        //['label' => 'Nature', 'url' => ['/destinasi/nature']],
         ['label' => 'Contact Us', 'url' => ['/contact']],
         
        

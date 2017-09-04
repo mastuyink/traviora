@@ -9,11 +9,11 @@ use yii\bootstrap\Carousel;
 
 
 /* @var $this yii\web\View */
+$lokasi = strtolower($model->idDestinasi->idLokasiDestinasi->lokasi);
 $this->title = $model->idDestinasi->nama_destinasi;
-$this->params['breadcrumbs'][] = strtolower($model->idDestinasi->idLokasiDestinasi->lokasi);
+$this->params['breadcrumbs'][] = ['label' =>$lokasi,'url' => ['/site/view-lokasi', 'lokasi' => $lokasi]];
 $this->params['breadcrumbs'][] = strtolower($model->idDestinasi->idJenisDestinasi->jenis_destinasi);
 $this->params['breadcrumbs'][] = $this->title;
-
 ?>
 <?php
 $this->registerJs("
@@ -205,13 +205,13 @@ echo "<center><h2><strong>".$model->idDestinasi->nama_destinasi."</strong></h2><
         ActiveForm::end();
 }elseif($model->idDestinasi->id_status == 1 && $Dest->stok_seat < $Dest->min_pax){
     echo "<ul class='list-group'>
-            <li class='list-group-item'><h4 class='text-justify'><strong>MOHON MAAF, SEAT PAX UNTUK TRIP INI SUDAH HABIS, JIKA ANDA TETAP INGIN MEMESSAN TRIP INI SILAHKAN HUBUNGI KAMI DI LIVE Chat Atau TINGGALKAN PESAN DI CONTACT US</strong></h4>
+            <li class='list-group-item'><h4 class='text-justify'><strong>SORRY, SEAT FOR THIS TRIP ALREADY OUT, IF YOU STAY WOULD LIKE TO TRY THIS TRIP PLEASE CONTACT US</strong></h4>
             </li>
 
          <ul>";
 }elseif($model->idDestinasi->id_status == 2){
     echo "<ul class='list-group'>
-            <li class='list-group-item'><h4 class='text-justify'><strong>MOHON MAAF, UNTUK SEMENTARA TRIP INI SEDANG TIDAK TERSEDIA</strong></h4>
+            <li class='list-group-item'><h4 class='text-justify'><strong>SORRY, FOR WHILE THIS TRIP IS NOT AVAILABLE</strong></h4>
             </li>
          <ul>";
 }

@@ -23,6 +23,7 @@ use app\models\TKurs;
 use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use kartik\widgets\Growl;
+use yii\data\Pagination;
 /**
  * Site controller
  */
@@ -33,8 +34,12 @@ class SiteController extends Controller
      */
     public function behaviors()
     {
-        $model = TMainCarrousel::find()->all();
-        Yii::$app->view->params['carrousel'] = $model ;
+        Yii::$app->view->params['listCurrency']   = ArrayHelper::map(TKurs::find()->all(), 'id', 'id');
+      //  Yii::$app->view->params['Carrousel']      = TCarrousel::find()->groupBy('id_post')->all();
+        Yii::$app->view->params['listLokasi']     = ArrayHelper::map(LokasiDestinasi::find()->all(), 'id', 'lokasi');
+        Yii::$app->view->params['jenidDestinasi'] = ArrayHelper::map(TJenisDestinasi::find()->all(), 'id', 'jenis_destinasi');
+        $model                                    = TMainCarrousel::find()->all();
+        Yii::$app->view->params['carrousel']      = $model ;
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -128,17 +133,17 @@ class SiteController extends Controller
     protected function pencarian($lokasi, $jenisD, $sort){
 
          if ($lokasi == null && $jenisD == null) {
-            return $dataProvider = TPost::find()->joinWith('idDestinasi')->where(['t_destinasi.id_status'=>1])->orderBy(['id'=>$sort])->all();
+            return $dataProvider = TPost::find()->joinWith('idDestinasi')->where(['t_destinasi.id_status'=>1])->orderBy(['id'=>$sort]);
             
-        }elseif ($lokasi !== null && $jenisD == null && ($dataProvider = TPost::find()->joinWith('idDestinasi')->where('t_destinasi.id_lokasi_destinasi = :lokasi',[':lokasi'=>$lokasi])->andWhere(['t_destinasi.id_status'=>1])->orderBy(['id'=>$sort])->all()) !== null) {
+        }elseif ($lokasi !== null && $jenisD == null && ($dataProvider = TPost::find()->joinWith('idDestinasi')->where('t_destinasi.id_lokasi_destinasi = :lokasi',[':lokasi'=>$lokasi])->andWhere(['t_destinasi.id_status'=>1])->orderBy(['id'=>$sort])) !== null) {
 
           return $dataProvider;
             
-        }elseif ($lokasi == null && $jenisD !== null && ($dataProvider = TPost::find()->joinWith('idDestinasi')->where('t_destinasi.id_jenis_destinasi = :jenisD',[':jenisD'=>$jenisD])->andWhere(['t_destinasi.id_status'=>1])->orderBy(['id'=>$sort])->all()) !== null) {
+        }elseif ($lokasi == null && $jenisD !== null && ($dataProvider = TPost::find()->joinWith('idDestinasi')->where('t_destinasi.id_jenis_destinasi = :jenisD',[':jenisD'=>$jenisD])->andWhere(['t_destinasi.id_status'=>1])->orderBy(['id'=>$sort])) !== null) {
 
             return $dataProvider;
 
-        }elseif ($lokasi !== null && $jenisD !== null && ($dataProvider = TPost::find()->joinWith('idDestinasi')->where('t_destinasi.id_lokasi_destinasi = :lokasi',[':lokasi'=>$lokasi])->andWhere('t_destinasi.id_jenis_destinasi = :jenisD',[':jenisD'=>$jenisD])->andWhere(['t_destinasi.id_status'=>1])->orderBy(['id'=>$sort])->all()) !== null) {
+        }elseif ($lokasi !== null && $jenisD !== null && ($dataProvider = TPost::find()->joinWith('idDestinasi')->where('t_destinasi.id_lokasi_destinasi = :lokasi',[':lokasi'=>$lokasi])->andWhere('t_destinasi.id_jenis_destinasi = :jenisD',[':jenisD'=>$jenisD])->andWhere(['t_destinasi.id_status'=>1])->orderBy(['id'=>$sort])) !== null) {
             
            return $dataProvider;
 
@@ -152,6 +157,72 @@ class SiteController extends Controller
      *
      * @return mixed
      */
+
+protected function findByLokasi($lokasi)
+{   
+    $model = TPost::find()->joinWith('idDestinasi.idLokasiDestinasi')->where('t_lokasi_destinasi.lokasi = :lokasi',[':lokasi'=>$lokasi]);
+        return $model;
+
+}
+
+ protected function findByKategori($lokasi,$kategori)
+{   
+    $model = TPost::find()->joinWith('idDestinasi.idLokasiDestinasi')->joinWith('idDestinasi.idJenisDestinasi')->where('t_lokasi_destinasi.lokasi = :lokasi',[':lokasi'=>$lokasi])->andWhere('t_jenis_destinasi.jenis_destinasi = :kategori',[':kategori'=>$kategori]);
+        return $model;
+   
+}
+
+public function actionViewLokasi($lokasi){
+
+    $dataProviders = $this->findByLokasi($lokasi);
+    $countQuery = clone $dataProviders;
+        $pages = new Pagination(['totalCount' => $countQuery->count(),'defaultPageSize' => 2]);
+        $dataProvider = $dataProviders->offset($pages->offset)
+        ->limit($pages->limit)
+        ->all();
+    if ($dataProvider == null) {
+      return $this->render('index',[
+        'dataProvider'=>$dataProvider,
+        ]);
+    }
+    $kurs =  $this->kursTable();
+        
+    foreach ($dataProvider as $key => $value) {
+            $lowerCost[$key] = $this->lowerCost($value->id_destinasi);
+    }
+
+    return $this->render('index',[
+        'dataProvider'=>$dataProvider,
+        'kurs'=>$kurs,
+        'lowerCost'=>$lowerCost,
+        'pages' => $pages,
+        ]);
+}
+
+public function actionViewKategori($lokasi,$kategori){
+
+    $dataProvider = $this->findByKategori($lokasi,$kategori);
+    if ($dataProvider == null) {
+      return $this->render('index',[
+        'dataProvider'=>$dataProvider,
+        ]);
+    }
+    $kurs =  $this->kursTable();
+
+    foreach ($dataProvider as $key => $value) {
+            $lowerCost[$key] = $this->lowerCost($value->id_destinasi);
+    }
+
+    return $this->render('index',[
+        'dataProvider'=>$dataProvider,
+        'kurs'=>$kurs,
+        'lowerCost'=>$lowerCost,
+        ]);
+}
+
+
+
+
 public function actionIndex()
  {    
       
@@ -227,15 +298,22 @@ public function actionIndex()
             $session['currency'] = 'USD';
         }
 
-       $dataProvider = $this->pencarian($lokasi, $jenisD, $sort);
+       $dataProviders = $this->pencarian($lokasi, $jenisD, $sort);
 
     }else{
         $sort = SORT_ASC;
-        $dataProvider = TPost::find()->joinWith('idDestinasi')->where(['t_destinasi.id_status'=>1])->orderBy(['id'=>$sort])->all();
+        $dataProviders = TPost::find()->joinWith('idDestinasi')->where(['t_destinasi.id_status'=>1])->orderBy(['id'=>$sort]);
+       
         $kurs =  $this->kursTable();
         $session['currency'] = 'USD';
         
     }
+
+     $countQuery = clone $dataProviders;
+        $pages = new Pagination(['totalCount' => $countQuery->count(),'defaultPageSize' => 2]);
+        $dataProvider = $dataProviders->offset($pages->offset)
+        ->limit($pages->limit)
+        ->all();
 
         if ($dataProvider == null) {
             $lowerCost    = null;
@@ -252,22 +330,18 @@ public function actionIndex()
 
         }
 
-        $this->layout = 'slide';
+        $this->layout   = 'slide';
         $Carrousel      = TCarrousel::find()->groupBy('id_post')->all();
         $listLokasi     = ArrayHelper::map(LokasiDestinasi::find()->all(), 'id', 'lokasi');
         $jenidDestinasi = ArrayHelper::map(TJenisDestinasi::find()->all(), 'id', 'jenis_destinasi');
-        $listCurrency = ArrayHelper::map(TKurs::find()->all(), 'id', 'id');
+        $listCurrency   = ArrayHelper::map(TKurs::find()->all(), 'id', 'id');
 
 
         return $this->render('index', [
-      
             'dataProvider' => $dataProvider,
-            'Carrousel'=>$Carrousel,
             'lowerCost'=>$lowerCost,
-            'listLokasi'=>$listLokasi,
-            'jenidDestinasi'=>$jenidDestinasi,
-            'listCurrency'=>$listCurrency,
             'kurs'=>$kurs,
+            'pages' => $pages,
            
 
         ]);

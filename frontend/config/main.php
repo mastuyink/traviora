@@ -83,19 +83,30 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+           'enableStrictParsing' => false,
             'rules' => [
+               '/site/index/page-<page:\d+>/' => '/site/index',
+               '/timeout'                              => '/site/timeout',
+               '/sign-in'                              => '/site/login',
+               '/sign-out'                             => '/site/logout',
+               '/contact'                              => '/site/contact',
+               '/destinasi/adventure'                  => '/posting/adventure',
+               '/destinasi/nature'                     => '/posting/nature',
+               '/destinasi/budaya'                     => '/posting/budaya',
+               '/booking/term-service/<name>'           => '/booking/term-service',
+               '<lokasi:[A-Za-z0-9 -_.]+>/<kategori:[A-Za-z0-9 -_.]+>/<slug:[A-Za-z0-9 -_.]+>'   => '/posting/view',
+               '<lokasi:\w+>'                           => '/site/view-lokasi',
+               '/<controller>/<action>'                 => '<controller>/<action>',
+               '/posting/cari-harga'                    =>'/posting/cari-harga',
+                 //  '/posting/view/<slug>'               => '/posting/view',
+               '<controller:\w+>/<action:\w+>'          => '<controller>/<action>',
+               '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+              
+               '/posting/thumb/<id:\d+>'                => '/posting/thumb',     
+               '<controller:\w+>/<id:\d+>'              => '<controller>/view',
+              
                  
-                 '/booking/term-service/<name>' => '/booking/term-service',
-                 '<lokasi>/<kategori>/<slug>'   => '/posting/view',
-              //   '<lokasi>'                     => '/site/lokasi',
-                 '/posting/view/<slug>'         => '/posting/view',
-                 '/timeout'                     => '/site/timeout',
-                 '/sign-in'                     => '/site/login',
-                 '/sign-out'                    => '/site/logout',
-                 '/contact'                     =>'/site/contact',
-                 '/destinasi/adventure'         =>'/posting/adventure',
-                 '/destinasi/nature'            =>'/posting/nature',
-                 '/destinasi/budaya'            =>'/posting/budaya',
+                
             ],
           
         ],

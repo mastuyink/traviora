@@ -46,7 +46,7 @@ class PostingController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['nature','adventure','login', 'error','home','view','thumb','cari-harga','carrousel'],
+                        'actions' => ['nature','adventure','login', 'error','home','view','thumb','cari-harga','carrousel','view-lokasi'],
                         'allow' => true,
                     ],
                     [
@@ -303,6 +303,9 @@ protected function cariDest($id_dest){
         throw new NotFoundHttpException();
     }
 }
+
+ 
+
 public function actionView($slug)
 {   
         $session      = Yii::$app->session;
@@ -370,7 +373,7 @@ public function actionView($slug)
              
              $session['destinasi.nama_destinasi']  = $model->idDestinasi->nama_destinasi;
              $Dest->save();
-             $session['timeout'] = date('H:i:s', strtotime('+30 minutes'));
+             $session['timeout'] = date('Y-m-d H:i:s', strtotime('+30 minutes'));
 
 
            return $this->redirect('/booking/tahap-1');

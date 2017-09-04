@@ -71,8 +71,8 @@ AppAsset::register($this);
     $menuItems = [
        // ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'HOME', 'url' => ['/']],
-        ['label' => 'Adventure', 'url' => ['/destinasi/adventure']],
-        ['label' => 'Nature', 'url' => ['/destinasi/nature']],
+       // ['label' => 'Adventure', 'url' => ['/destinasi/adventure']],
+       // ['label' => 'Nature', 'url' => ['/destinasi/nature']],
         ['label' => 'Contact Us', 'url' => ['/site/contact']],
         
         //['label' => 'BOOKING', 'url' => ['/booking/index']],

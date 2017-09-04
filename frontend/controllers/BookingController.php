@@ -55,7 +55,7 @@ class BookingController extends Controller
   public function beforeAction($action){
    
    $session       = Yii::$app->session;
-    if ($session['timeout'] < date('H:i:s') || $session['timeout'] == null) {
+    if ($session['timeout'] < date('Y-m-d H:i:s') || $session['timeout'] == null) {
       $modelDestinasi = $this->findDestinasi($session['destinasi.id_destinasi']);
       $modelDestinasi->stok_seat    = $modelDestinasi->stok_seat + $session['booking.pax_request'];
       $modelDestinasi->save();

@@ -65,8 +65,10 @@ $this->registerJs("
 
                 // Make a call to the REST api to execute the payment
                 return actions.payment.execute().then(function() {
+                    $('#rad-method').hide(100);
                      var mtk = '".$maskToken."';
-                  $('#hasil-ajax').html('<center><img src=../../loading.svg></center>');
+                     $('#hasil-ajax').html('<center><img src=../../loading.svg></center>');
+
                      $.ajax({
                      url : '".Url::to(["success"])."',
                      type: 'POST',

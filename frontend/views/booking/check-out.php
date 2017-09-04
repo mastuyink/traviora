@@ -82,8 +82,8 @@ $('#btn-detail').on('click', function(){
   <div class="panel panel-primary">
   <div class="panel-heading">TRIP DETAIL</div>
     <ul class="list-group">
-      <li class="list-group-item">Name Of Trip <strong style="font-size: 20px;" class="pull-right"><?= $session['destinasi.nama_destinasi'] ?> </strong> </li>
-            <li class="list-group-item">Date Of Trip<strong style="font-size: 15px;" class="pull-right"><?= date('d-m-Y', strtotime($session['booking.tgl_trip'])) ?></strong> </li>
+      <li class="list-group-item">Name Of Trip <strong class="pull-right"><?= $session['destinasi.nama_destinasi'] ?> </strong> </li>
+            <li class="list-group-item">Date Of Trip<strong class="pull-right"><?= date('d-m-Y', strtotime($session['booking.tgl_trip'])) ?></strong> </li>
             <li class="list-group-item">Number Of Pax <strong class="pull-right"> <?= $session['booking.total_pax']?> Pax </strong></li>
 
     </ul>

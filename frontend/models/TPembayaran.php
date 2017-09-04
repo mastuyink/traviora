@@ -67,11 +67,11 @@ public function generatePaymentToken($attribute, $length = 25){
         return [
             'id' => 'ID',
             'id_booking' => 'No Booking',
-            'id_metode' => 'Metode Pembayaran',
-            'nama_pengirim' => 'Nama Pengirim',
-            'tgl_kirim' => 'Tgl Kirim',
-            'jumlah_kirim' => 'Jumlah Kirim',
-            'token_konfirmasi' => 'Token Konfirmasi',
+            'id_metode' => 'Payment Method',
+            'nama_pengirim' => 'Sender Name',
+            'tgl_kirim' => 'Transfer date',
+            'jumlah_kirim' => 'Total Transfer',
+            'token_konfirmasi' => 'Confirm Token',
             'currency'=>'Currency',
             'datetime' => 'Datetime',
         ];

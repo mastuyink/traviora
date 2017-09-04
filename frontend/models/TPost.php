@@ -172,4 +172,5 @@ class TPost extends \yii\db\ActiveRecord
     {
         return $this->hasOne(TDestinasi::className(), ['id' => 'id_destinasi']);
     }
+
 }

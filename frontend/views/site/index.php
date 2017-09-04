@@ -6,6 +6,7 @@ use yii\widgets\Pjax;
 use yii\helpers\Url;
 use kartik\widgets\AlertBlock;
 
+
 /* @var $this yii\web\View */
 
 $this->title = 'Welcome To Traviora';
@@ -52,15 +53,15 @@ $this->registerMetaTag([
 
           <div class="col-md-1">
             <?= Html::label('Currency', '',['class'=>'control-label'] ); ?>
-            <?= Html::dropDownList('Currency', '',$listCurrency, ['id'=>'drop-cur','class'=>'form-control']); ?>
+            <?= Html::dropDownList('Currency', '',Yii::$app->view->params['listCurrency'], ['id'=>'drop-cur','class'=>'form-control']); ?>
           </div>
           <div class="col-md-3">
             <?= Html::label('Location', 'Location',['class'=>'control-label'] ); ?>
-            <?= Html::dropDownList('Lokasi', '', $listLokasi, ['prompt'=>'--> All Location <--','class'=>'form-control','id'=>'drop-lokasi']); ?>
+            <?= Html::dropDownList('Lokasi', '', Yii::$app->view->params['listLokasi'], ['prompt'=>'--> All Location <--','class'=>'form-control','id'=>'drop-lokasi']); ?>
           </div>
           <div class="col-md-3">
           <?= Html::label('Trip Type', 'Jenis Trip',['class'=>'control-label'] ); ?>
-          <?= Html::dropDownList('Jenis Trip', '', $jenidDestinasi, ['prompt'=>'--> All Trip Type <--','class'=>'form-control','id'=>'drop-jenis-trip']); ?>
+          <?= Html::dropDownList('Jenis Trip', '', Yii::$app->view->params['jenidDestinasi'], ['prompt'=>'--> All Trip Type <--','class'=>'form-control','id'=>'drop-jenis-trip']); ?>
           </div>
           <div class="col-md-2">
           <?= Html::label('Sort By', 'sort',['class'=>'control-label'] ); ?>
@@ -97,48 +98,19 @@ $this->registerMetaTag([
 
   </div>
 
-<div  style="padding-top: 0px;">
+<div style="padding-top: 0px;">
+   <?=
+  $this->render('trip-card',[
+      'dataProvider' => $dataProvider,
+      'lowerCost'=>$lowerCost,
+      'kurs'=>$kurs,
+      'pages' => $pages,
+    ])
 
-<?php Pjax::begin(['id'=>'pjax-index']); ?>              
-<div class="col-md-12" id="loading">
+     ?>
+    
+</div>
 
-        <?php 
+ 
 
-        if ($dataProvider !== null) {
-              foreach ($dataProvider as $key => $konten) {
-                 echo "<div class='col-md-4' >
-                 <div class='panel panel-default' style='min-height:200%;'>
-                        <div class='panel-heading' style='min-height:100%;'><a href='".strtolower($konten->idDestinasi->idLokasiDestinasi->lokasi)."/".strtolower($konten->idDestinasi->idJenisDestinasi->jenis_destinasi)."/".strtolower($konten->slug)."'>".Html::img(['/posting/thumb','id'=>$konten->id],['alt'=>'thumb','class'=>'img-thum', 'width'=>'100%','height'=>'auto'])."</a></div>
-                     <ul class='list-group'>
-                      <li class='list-group-item'><center>".Html::a($konten->idDestinasi->nama_destinasi,['/posting/view','lokasi'=>strtolower($konten->idDestinasi->idLokasiDestinasi->lokasi),'kategori'=>strtolower($konten->idDestinasi->idJenisDestinasi->jenis_destinasi),'slug'=>strtolower($konten->slug)],['style'=>'color:black; text-decoration: none;'])."</center></li>";
                       
-                      echo "<li class='list-group-item'><div class='glyphicon glyphicon-briefcase'> Start From ".$kurs->id." ". round($lowerCost[$key] / $kurs->round_kurs,2)." / pax</div> </li>";
-                      
-                  echo "
-                      <li class='list-group-item'><div class='glyphicon glyphicon-user'> Min ". $konten->idDestinasi->min_pax ." Pax</div> </li>
-                      <li class='list-group-item'><div class='glyphicon glyphicon-map-marker'> ". $konten->idDestinasi->idJenisDestinasi->jenis_destinasi ."</div> </li>
-                
-
-                     </ul>
-
-                    <center style='padding-left: 0%;'>".Html::a('DETAIL',['/posting/view','lokasi'=>strtolower($konten->idDestinasi->idLokasiDestinasi->lokasi),'kategori'=>strtolower($konten->idDestinasi->idJenisDestinasi->jenis_destinasi),'slug'=>$konten->slug],['class'=>'btn btn-block btn-primary '])."</center>
-                </div>
-                </div>";
-            }
-        }else{
-          echo "<div>Trip Tidak Ditemukan</div>";
-        }
-        
-
-       ?> 
-       </div>
-    <?php Pjax::end(); ?>
-                      
-        </div>
-<?php 
-
-echo AlertBlock::widget([
-            'useSessionFlash' => true,
-            'type' => AlertBlock::TYPE_GROWL
-            ]);
-      ?>
