@@ -23,8 +23,8 @@ $(document).ready(function(){
 ");
 
 $this->registerMetaTag([
-    'name' => 'This Is Name Meta tag Tarviora',
-    'content' => 'Ini Adalah Content dari meta tag',
+    'name' => 'description',
+    'content' => 'Welcome To Content description traviora.com',
 ]);
 ?>
 <style type="text/css">
