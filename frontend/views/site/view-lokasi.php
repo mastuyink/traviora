@@ -13,7 +13,6 @@ $this->title = 'Welcome To Traviora';
 ?>
 <?php 
 $my = Yii::$app->request->pathInfo;
-echo "here->".$my;
 $this->registerJs("
 $('#pencarian').on('click',function(){
   $('#form-cari').toggle(500);
