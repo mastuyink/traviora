@@ -172,26 +172,56 @@ protected function findByLokasi($lokasi)
    
 }
 
-public function actionViewLokasi($lokasi){
+public function actionViewLokasi($lokasi = null){
 
-    $dataProviders = $this->findByLokasi($lokasi);
-    $countQuery = clone $dataProviders;
+  if (Yii::$app->request->isAjax) {
+        $data = Yii::$app->request->post();
+        $sort = $data['val'];
+        $lokasi = $data['vlok'];
+        $jenisD = $data['vjds'];
+        $cur = $data['curx'];
+
+        if ($sort == 1) {
+            $sort = SORT_ASC;
+        }elseif ($sort == 2) {
+            $sort = SORT_DESC;
+        }else{
+            $sort = SORT_ASC;
+        }
+
+        if ($cur !== 'USD') {
+
+            $kurs =  $this->kursTable($cur);
+            $session['currency'] = $cur;
+
+        }else{
+            $kurs =  $this->kursTable();
+            $session['currency'] = 'USD';
+        }
+
+       $dataProviders = $this->pencarian($lokasi, $jenisD, $sort);
+
+    }else{
+        $dataProviders = $this->findByLokasi($lokasi);
+        $kurs =  $this->kursTable();
+        $session['currency'] = 'USD';
+    }    
+        $countQuery = clone $dataProviders;
         $pages = new Pagination(['totalCount' => $countQuery->count(),'defaultPageSize' => 6]);
-        $dataProvider = $dataProviders->offset($pages->offset)
-        ->limit($pages->limit)
-        ->all();
+        $dataProvider = $dataProviders->offset($pages->offset)->limit($pages->limit)->all();
+        
     if ($dataProvider == null) {
-      return $this->render('index',[
+      return $this->render('view-lokasi',[
         'dataProvider'=>$dataProvider,
         ]);
     }
-    $kurs =  $this->kursTable();
+
         
     foreach ($dataProvider as $key => $value) {
             $lowerCost[$key] = $this->lowerCost($value->id_destinasi);
     }
 
-    return $this->render('index',[
+    return $this->render('view-lokasi',[
         'dataProvider'=>$dataProvider,
         'kurs'=>$kurs,
         'lowerCost'=>$lowerCost,
@@ -201,6 +231,7 @@ public function actionViewLokasi($lokasi){
 
 public function actionViewKategori($lokasi,$kategori){
 
+
     $dataProvider = $this->findByKategori($lokasi,$kategori);
     if ($dataProvider == null) {
       return $this->render('index',[
@@ -208,7 +239,6 @@ public function actionViewKategori($lokasi,$kategori){
         ]);
     }
     $kurs =  $this->kursTable();
-
     foreach ($dataProvider as $key => $value) {
             $lowerCost[$key] = $this->lowerCost($value->id_destinasi);
     }

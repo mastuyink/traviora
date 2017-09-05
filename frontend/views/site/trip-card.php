@@ -17,8 +17,7 @@ use yii\widgets\LinkPager;
   }
 </style>
 
-
-<?php Pjax::begin(['id'=>'pjax-index']); ?>              
+              
 <div class="col-md-12" id="loading">
 
   <?php 
@@ -57,4 +56,4 @@ use yii\widgets\LinkPager;
 ]);
   ?>
   </div>
-    <?php Pjax::end(); ?>
+  

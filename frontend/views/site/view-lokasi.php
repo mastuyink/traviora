@@ -10,16 +10,26 @@ use kartik\widgets\AlertBlock;
 /* @var $this yii\web\View */
 
 $this->title = 'Welcome To Traviora';
-
 ?>
 <?php 
+$my = Yii::$app->request->pathInfo;
+echo "here->".$my;
 $this->registerJs("
 $('#pencarian').on('click',function(){
   $('#form-cari').toggle(500);
 });
 
 $(document).ready(function(){
+  var path = '".$my."';
   $('#drop-cur').val('USD');
+  $('#drop-lokasi').val('$my');
+var dd = document.getElementById('drop-lokasi');
+for (var i = 0; i < dd.options.length; i++) {
+    if (dd.options[i].text === path) {
+        dd.selectedIndex = i;
+        break;
+    }
+}
 });
 ");
 
@@ -112,7 +122,5 @@ $this->registerMetaTag([
  }
      ?>
 <?php Pjax::end(); ?>
-
- 
 
                       
